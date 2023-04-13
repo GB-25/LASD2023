@@ -14,7 +14,7 @@ namespace lasd {
 /* ************************************************************************** */
 
 template <typename Data>
-class StackVec {
+class StackVec : virtual public Stack<Data>, virtual public Vector<Data>{
                   // Must extend Stack<Data>,
                   //             Vector<Data>
 
@@ -24,79 +24,79 @@ private:
 
 protected:
 
-  // using Vector<Data>::???;
+  using Vector<Data>::dimensione;
 
   // ...
 
 public:
 
   // Default constructor
-  // StackVec() specifier;
+  StackVec();
 
   /* ************************************************************************ */
 
   // Specific constructor
-  // StackVec(argument) specifiers; // A stack obtained from a MappableContainer
-  // StackVec(argument) specifiers; // A stack obtained from a MutableMappableContainer
+  StackVec(const MappableContainer<Data>&); // A stack obtained from a MappableContainer
+  StackVec(const MutableMappableContainer<Data>&); // A stack obtained from a MutableMappableContainer
 
   /* ************************************************************************ */
 
   // Copy constructor
-  // StackVec(argument);
+  StackVec(const StackVec&);
 
   // Move constructor
-  // StackVec(argument);
+  StackVec(StackVec&&) noexcept;
 
   /* ************************************************************************ */
 
   // Destructor
-  // ~StackVec() specifier;
+  virtual ~StackVec();
 
   /* ************************************************************************ */
 
   // Copy assignment
-  // type operator=(argument);
+  StackVec& operator=(const StackVec&);
 
   // Move assignment
-  // type operator=(argument);
+  StackVec& operator = (StackVec&&) noexcept;
 
   /* ************************************************************************ */
 
   // Comparison operators
-  // type operator==(argument) specifiers;
-  // type operator!=(argument) specifiers;
+  bool operator == (const StackVec&) const noexcept;
+  bool operator != (const StackVec&) const noexcept;
 
   /* ************************************************************************ */
 
   // Specific member functions (inherited from Stack)
 
-  // type Top() specifiers; // Override Stack member (non-mutable version; must throw std::length_error when empty)
-  // type Top() specifiers; // Override Stack member (non-mutable version; must throw std::length_error when empty)
-  // type Pop() specifiers; // Override Stack member (must throw std::length_error when empty)
-  // type TopNPop() specifiers; // Override Stack member (must throw std::length_error when empty)
-  // type Push(argument) specifiers; // Override Stack member (copy of the value)
-  // type Push(argument) specifiers; // Override Stack member (move of the value)
+  virtual const Data& Top() override; // Override Stack member (non-mutable version; must throw std::length_error when empty)
+  virtual Data& Top() override; // Override Stack member (non-mutable version; must throw std::length_error when empty)
+  virtual void Pop() override;; // Override Stack member (must throw std::length_error when empty)
+  virtual Data TopNPop() override; // Override Stack member (must throw std::length_error when empty)
+  virtual void Push(const Data&) override; // Override Stack member (copy of the value)
+  virtual void Push(Data&&) override; // Override Stack member (move of the value)
 
   /* ************************************************************************ */
 
   // Specific member functions (inherited from Container)
 
-  // type Empty() specifiers; // Override Container member
+  virtual bool Empty() const noexcept override; // Override Container member
 
-  // type Size() specifiers; // Override Container member
+  virtual ulong Size() const noexcept override; // Override Container member
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from ClearableContainer)
 
-  // type Clear() specifiers; // Override ClearableContainer member
+  virtual void Clear() noexcept override; // Override ClearableContainer member
 
 protected:
 
   // Auxiliary member functions
 
-  // type Expand() specifiers;
-  // type Reduce() specifiers;
+  void Expand();
+  void Reduce();
 
 };
 

@@ -492,7 +492,7 @@ public:
   // type operator=(argument); // Move assignment of abstract types should not be possible.
 
   /* ************************************************************************ */
-
+//PostOrderFoldableContainer
   // Comparison operators
   // type operator==(argument) specifiers; // Comparison of abstract types might not be possible.
   // type operator!=(argument) specifiers; // Comparison of abstract types might not be possible.

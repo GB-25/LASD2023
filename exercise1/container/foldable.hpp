@@ -45,10 +45,7 @@ public:
 
   // Comparison operators
   bool operator==(const FoldableContainer&) const noexcept=delete; // Comparison of abstract types might not be possible.
-  bool operator!=(const FoldableContainer&) const noexcept=delete; // Comparison of abstract types might not be possible.
-
-  /* ************************************************************************ */
-
+  bool operator!=(const FoldableContainer&) const noexcept=delete; // Comparison of abstract types might not be possibPreOrderFoldable&
   // Specific member function
 
   using FoldFunctor = std::function<void(const Data &, void *)>;
@@ -85,16 +82,16 @@ public:
   /* ************************************************************************ */
 
   // Copy assignment
-  PreOrderFoldable& operator=(const PreOrderFoldable&)=delete; // Copy assignment of abstract types should not be possible.
+  PreOrderFoldableContainer& operator=(const PreOrderFoldableContainer&)=delete; // Copy assignment of abstract types should not be possible.
 
   // Move assignment
-  PreOrderFoldable& operator=(PreOrderFoldable&&)noexcept=delete; // Move assignment of abstract types should not be possible.
+  PreOrderFoldableContainer& operator=(PreOrderFoldableContainer&&)noexcept=delete; // Move assignment of abstract types should not be possible.
 
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const PreOrderFoldable&) const noexcept=delete; // Comparison of abstract types might not be possible.
-  bool operator!=(const PreOrderFoldable&) const noexcept=delete; // Comparison of abstract types might not be possible.
+  bool operator==(const PreOrderFoldableContainer&) const noexcept=delete; // Comparison of abstract types might not be possible.
+  bool operator!=(const PreOrderFoldableContainer&) const noexcept=delete; // Comparison of abstract types might not be possible.
 
   /* ************************************************************************ */
 

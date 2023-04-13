@@ -23,7 +23,7 @@ private:
 
 protected:
 
-  // ...
+  using Container::dimensione;
 
 public:
 
@@ -41,8 +41,8 @@ public:
   /* ************************************************************************ */
 
   // Comparison operators
-  bool operator==(const LinearContainer&) const noexcept=0; // Comparison of abstract types is possible.
-  bool operator!=(const LinearContainer&) const noexcept=0; // Comparison of abstract types is possible.
+  bool operator==(const LinearContainer&) const noexcept; // Comparison of abstract types is possible.
+  bool operator!=(const LinearContainer&) const noexcept; // Comparison of abstract types is possible.
 
   /* ************************************************************************ */
 
@@ -51,11 +51,11 @@ public:
   virtual Data& operator[](const ulong) const =0; // (non-mutable version; concrete function must throw std::out_of_range when out of range)
   virtual Data& operator[](const ulong) =0; // (mutable version; concrete function must throw std::out_of_range when out of range)
 
-  virtual Data& Front() const =0; // (non-mutable version; concrete function must throw std::length_error when empty)
-  virtual Data& Front() =0; // (mutable version; concrete function must throw std::length_error when empty)
+  virtual Data& Front() const; // (non-mutable version; concrete function must throw std::length_error when empty)
+  virtual Data& Front(); // (mutable version; concrete function must throw std::length_error when empty)
 
-  virtual Data& Back() const =0; //imensione (non-mutable version; concrete function must throw std::length_error when empty)
-  virtual Data& Back() =0; // (mutable version; concrete function must throw std::length_error when empty)
+  virtual Data& Back() const; //imensione (non-mutable version; concrete function must throw std::length_error when empty)
+  virtual Data& Back(); // (mutable version; concrete function must throw std::length_error when empty)
 
   /* ************************************************************************ */
 
@@ -103,19 +103,19 @@ public:
 
   using typename MutableMappableContainer<Data>::MutableMapFunctor;
 
-  virtual void Map(MutableMapFunctor) const override; // Override MutableMappableContainer member
+  virtual void Map(MutableMapFunctor) override; // Override MutableMappableContainer member
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from MutablePreOrderMappableContainer)
 
-  virtual void PreOrderMap(MutableMapFunctor) const override; // Override MutablePreOrderMappableContainer member
+  virtual void PreOrderMap(MutableMapFunctor) override; // Override MutablePreOrderMappableContainer member
 
   /* ************************************************************************ */
 
   // Specific member function (inherited from MutablePostOrderMappableContainer)
 
-  virtual void PostOrderMap(MutableMapFunctor)const override; // Override MutablePostOrderMappableContainer member
+  virtual void PostOrderMap(MutableMapFunctor) override; // Override MutablePostOrderMappableContainer member
 
 };
 

@@ -6,7 +6,6 @@
 
 #include "../container/container.hpp"
 #include "../container/linear.hpp"
-
 /* ************************************************************************** */
 
 namespace lasd {
@@ -33,6 +32,7 @@ public:
   // Default constructor
   Vector() =default;
 
+  Data* elemento = nullptr;
   /* ************************************************************************ */
 
   // Specific constructors
